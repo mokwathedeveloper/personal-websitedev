@@ -51,7 +51,7 @@ export function Hero() {
         }}
       />
       
-      <div className="container relative z-10 flex flex-col items-center text-center py-12">
+      <div className="container mx-auto relative z-10 flex flex-col items-center text-center py-12 px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="mb-10 relative inline-block">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />

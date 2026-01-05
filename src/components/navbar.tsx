@@ -39,7 +39,7 @@ export function Navbar() {
           : "bg-transparent py-6"
       )}
     >
-      <div className="container flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="font-bold text-2xl tracking-tighter flex items-center gap-2 group shrink-0">
           <div className="bg-primary text-primary-foreground w-10 h-10 flex items-center justify-center rounded-xl group-hover:rotate-[10deg] transition-transform duration-500 shadow-lg shadow-primary/20 font-heading">
             {SITE_CONFIG.name.charAt(0)}

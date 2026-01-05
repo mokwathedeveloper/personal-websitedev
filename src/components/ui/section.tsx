@@ -30,7 +30,7 @@ export function Section({
       {...props}
     >
       {container ? (
-        <div className="container relative z-10 w-full">
+        <div className="container mx-auto relative z-10 w-full px-4 sm:px-6 lg:px-8">
           {children}
         </div>
       ) : (
