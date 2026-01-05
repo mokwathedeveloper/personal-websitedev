@@ -12,7 +12,7 @@ import { SocialLinks } from "@/components/social-links"
 export function Footer() {
   return (
     <footer className="relative bg-muted/30 border-t pt-24 pb-12">
-      <div className="container px-4 sm:px-6 lg:px-8">
+      <div className="container">
         {/* Top Section: CTA & Newsletter */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 items-start">
           <div className="lg:col-span-7 space-y-6">
