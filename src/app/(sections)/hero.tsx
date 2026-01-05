@@ -53,7 +53,7 @@ export function Hero() {
           className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading"
         >
           {CONTENT.hero.title.first} <br className="hidden md:block" />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-pink-500 animate-gradient-x">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 animate-gradient-x">
             {CONTENT.hero.title.highlight}
           </span> {CONTENT.hero.title.last}
         </motion.h1>

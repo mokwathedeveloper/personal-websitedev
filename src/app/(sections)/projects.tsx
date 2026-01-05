@@ -84,9 +84,9 @@ export function Projects() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="h-full flex flex-col overflow-hidden group relative border-transparent bg-card/50 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1">
+                <Card className="h-full flex flex-col overflow-hidden group relative border-transparent bg-card/50 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
                   {/* Gradient Border Effect */}
-                  <div className="absolute inset-0 rounded-lg p-[1px] bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-primary/50 group-hover:via-purple-500/50 group-hover:to-primary/50 -z-10 transition-all duration-500" />
+                  <div className="absolute inset-0 rounded-lg p-[1px] bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-primary/30 group-hover:via-primary/10 group-hover:to-primary/30 -z-10 transition-all duration-500" />
                   
                   <div className="relative aspect-video overflow-hidden bg-muted/50 group-hover:shadow-inner transition-all">
                     {/* 
