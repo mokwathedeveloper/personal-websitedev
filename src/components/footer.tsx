@@ -9,9 +9,9 @@ export function Footer() {
   return (
     <footer className="bg-foreground text-background py-24 pb-12 overflow-hidden relative">
       <div className="container px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 mb-16 lg:mb-24">
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight">
               Let's build something <br />
               <span className="text-primary-foreground/50">extraordinary.</span>
             </h2>

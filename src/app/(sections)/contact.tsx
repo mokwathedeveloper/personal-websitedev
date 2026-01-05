@@ -57,7 +57,7 @@ export function Contact() {
        <div className="absolute bottom-0 left-0 -z-10 h-[500px] w-[500px] bg-primary/5 blur-[120px] rounded-full opacity-50" />
 
       <div className="container px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
           
           <motion.div
             initial={{ opacity: 0, x: -20 }}
