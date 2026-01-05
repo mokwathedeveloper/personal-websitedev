@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Github, Linkedin, Twitter } from "lucide-react"
+import { ArrowRight, Github, Linkedin, Twitter, Mail } from "lucide-react"
 import { SITE_CONFIG, CONTENT } from "@/lib/data"
 import Link from "next/link"
 import RetroGrid from "@/components/ui/retro-grid"
 import Image from "next/image"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export function Hero() {
   return (
@@ -81,9 +82,54 @@ export function Hero() {
           </Button>
           <Button size="lg" variant="outline" className="gap-2 h-12 px-8 text-base bg-background/50 backdrop-blur-sm hover:bg-background/80 hover:border-primary/50 transition-colors" asChild>
             <Link href="/contact">
-              {CONTENT.hero.cta.secondary}
+              {CONTENT.hero.cta.secondary} <Mail className="w-4 h-4" />
             </Link>
           </Button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-12 flex gap-6 text-muted-foreground"
+        >
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-primary/10 hover:text-primary transition-all duration-300">
+                  <Github className="w-6 h-6" />
+                  <span className="sr-only">GitHub</span>
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>GitHub</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-primary/10 hover:text-primary transition-all duration-300">
+                  <Linkedin className="w-6 h-6" />
+                  <span className="sr-only">LinkedIn</span>
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>LinkedIn</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a href={SITE_CONFIG.socials.twitter} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-primary/10 hover:text-primary transition-all duration-300">
+                  <Twitter className="w-6 h-6" />
+                  <span className="sr-only">Twitter</span>
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Twitter</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </motion.div>
       </div>
     </section>

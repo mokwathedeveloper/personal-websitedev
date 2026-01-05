@@ -3,7 +3,7 @@
 import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, Code2, Sparkles } from "lucide-react"
+import { ExternalLink, Github, Code2, Sparkles, Layout, Server, Smartphone, Grid } from "lucide-react"
 import { PROJECTS, CONTENT } from "@/lib/data"
 import { cn } from "@/lib/utils"
 import {
@@ -18,6 +18,17 @@ import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 
 const categories = ["All", ...new Set(PROJECTS.map((project) => project.category))]
+
+const getCategoryIcon = (category: string) => {
+  switch (category) {
+    case "All": return <Grid className="w-4 h-4 mr-2" />
+    case "Full Stack": return <Layout className="w-4 h-4 mr-2" />
+    case "Web App": return <Code2 className="w-4 h-4 mr-2" />
+    case "AI/ML": return <Server className="w-4 h-4 mr-2" />
+    case "Mobile": return <Smartphone className="w-4 h-4 mr-2" />
+    default: return <Code2 className="w-4 h-4 mr-2" />
+  }
+}
 
 export function Projects() {
   const [filter, setFilter] = React.useState("All")
@@ -65,6 +76,7 @@ export function Projects() {
               )}
               size="sm"
             >
+              {getCategoryIcon(category)}
               {category}
             </Button>
           ))}

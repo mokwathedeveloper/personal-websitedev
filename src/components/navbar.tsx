@@ -14,8 +14,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
-import { Menu } from "lucide-react"
+import { Menu, Home, User, Briefcase, Mail } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false)
@@ -29,6 +30,16 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const getIcon = (name: string) => {
+    switch (name) {
+      case "Home": return <Home className="h-5 w-5" />
+      case "About": return <User className="h-5 w-5" />
+      case "Projects": return <Briefcase className="h-5 w-5" />
+      case "Contact": return <Mail className="h-5 w-5" />
+      default: return <Home className="h-5 w-5" />
+    }
+  }
 
   return (
     <header
@@ -45,23 +56,33 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6 items-center">
-          {NAV_LINKS.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary relative group",
-                pathname === item.href ? "text-primary" : "text-muted-foreground"
-              )}
-            >
-              {item.name}
-              {pathname === item.href && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary rounded-full" />
-              )}
-            </Link>
-          ))}
-          <Separator orientation="vertical" className="h-6" />
+        <nav className="hidden md:flex gap-2 items-center">
+          <TooltipProvider>
+            {NAV_LINKS.map((item) => (
+              <Tooltip key={item.name}>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "p-2 rounded-md transition-colors hover:bg-muted hover:text-primary relative group",
+                      pathname === item.href ? "text-primary bg-primary/10" : "text-muted-foreground"
+                    )}
+                    aria-label={item.name}
+                  >
+                    {getIcon(item.name)}
+                    {pathname === item.href && (
+                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                    )}
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{item.name}</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </TooltipProvider>
+          
+          <div className="h-6 w-[1px] bg-border mx-2" />
           <ModeToggle />
         </nav>
 
@@ -79,19 +100,20 @@ export function Navbar() {
               <SheetHeader className="text-left mb-6">
                 <SheetTitle className="text-xl font-bold">Menu</SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-col gap-2">
                 {NAV_LINKS.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      "text-lg font-medium transition-colors hover:text-primary px-2 py-1 rounded-md",
+                      "flex items-center gap-4 text-lg font-medium transition-colors hover:text-primary px-4 py-3 rounded-md",
                       pathname === item.href 
                         ? "text-primary bg-primary/10" 
-                        : "text-muted-foreground"
+                        : "text-muted-foreground hover:bg-muted"
                     )}
                   >
+                    {getIcon(item.name)}
                     {item.name}
                   </Link>
                 ))}

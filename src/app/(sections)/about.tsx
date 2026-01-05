@@ -98,7 +98,7 @@ export function About() {
                 </span>
                 {CONTENT.about.experienceTitle}
               </h3>
-              <div className="space-y-6">
+              <div className="space-y-8 relative pl-6 border-l-2 border-primary/20">
                 {EXPERIENCES.map((exp, index) => (
                   <motion.div
                     key={index}
@@ -106,19 +106,22 @@ export function About() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
+                    className="relative"
                   >
-                    <Card className="relative overflow-hidden border-l-4 border-l-primary shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group">
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <CardHeader className="pb-2 relative">
-                        <div className="flex justify-between items-start mb-1">
-                          <CardTitle className="text-base font-bold group-hover:text-primary transition-colors font-heading">{exp.role}</CardTitle>
-                          <Badge variant="outline" className="text-xs font-normal bg-background/80 backdrop-blur-sm">
+                    {/* Timeline Dot */}
+                    <span className="absolute -left-[31px] top-1 h-4 w-4 rounded-full border-4 border-background bg-primary" />
+                    
+                    <Card className="relative overflow-hidden border-none bg-background/50 shadow-sm hover:shadow-md transition-all duration-300">
+                      <CardHeader className="pb-2">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1 gap-2">
+                          <CardTitle className="text-base font-bold text-foreground">{exp.role}</CardTitle>
+                          <Badge variant="secondary" className="w-fit text-xs font-normal">
                             {exp.period}
                           </Badge>
                         </div>
                         <div className="text-sm font-medium text-primary">{exp.company}</div>
                       </CardHeader>
-                      <CardContent className="relative">
+                      <CardContent>
                         <p className="text-sm text-muted-foreground leading-relaxed">
                           {exp.description}
                         </p>
