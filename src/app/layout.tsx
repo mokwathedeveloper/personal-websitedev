@@ -32,27 +32,62 @@ export const viewport: Viewport = {
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
   ],
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export const metadata: Metadata = {
-  title: 'Mokwa | Portfolio',
-  description: 'Personal portfolio showcasing my work and skills',
-  keywords: ['portfolio', 'developer', 'designer', 'freelancer'],
-  authors: [{ name: 'Mokwa' }],
+  metadataBase: new URL('https://personal-websitedev.vercel.app'),
+  title: {
+    default: 'Mokwa | Architectural Portfolio Engine',
+    template: '%s | Mokwa Portfolio'
+  },
+  description: 'A hyper-modern, architecturally sound personal portfolio engine engineered for high-impact digital presence. Showcasing Senior-level Full Stack engineering with cinematic motion design.',
+  keywords: [
+    'portfolio', 'developer', 'designer', 'full-stack', 'next.js', 'react', 
+    'typescript', 'tailwind', 'framer-motion', 'architecture', 'engineering'
+  ],
+  authors: [{ name: 'Mokwa', url: 'https://github.com/mokwathedeveloper' }],
   creator: 'Mokwa',
+  publisher: 'Mokwa',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mokwa.dev',
-    title: 'Mokwa | Portfolio',
-    description: 'Personal portfolio showcasing my work and skills',
+    url: 'https://personal-websitedev.vercel.app',
+    title: 'Mokwa | Architectural Portfolio Engine',
+    description: 'A hyper-modern, architecturally sound personal portfolio engine engineered for high-impact digital presence.',
     siteName: 'Mokwa Portfolio',
+    images: [
+      {
+        url: '/images/profile.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Mokwa Portfolio',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mokwa | Portfolio',
-    description: 'Personal portfolio showcasing my work and skills',
-    creator: '@mokwa',
+    title: 'Mokwa | Architectural Portfolio Engine',
+    description: 'A hyper-modern, architecturally sound personal portfolio engine engineered for high-impact digital presence.',
+    creator: '@mokwathedeveloper',
+    images: ['/images/profile.webp'],
+  },
+  alternates: {
+    canonical: 'https://personal-websitedev.vercel.app',
   },
 };
 

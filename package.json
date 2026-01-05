@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "./scripts/deploy.sh",
+    "type-check": "tsc --noEmit",
+    "preview": "npm run build && npm run start"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
