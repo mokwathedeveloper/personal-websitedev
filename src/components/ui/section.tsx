@@ -4,13 +4,18 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode
   id?: string
   container?: boolean
+  fullHeight?: boolean
 }
 
-export function Section({ children, id, className, container = true, ...props }: SectionProps) {
+export function Section({ children, id, className, container = true, fullHeight = false, ...props }: SectionProps) {
   return (
     <section 
       id={id} 
-      className={cn("py-16 md:py-24 relative overflow-hidden", className)} 
+      className={cn(
+        "relative overflow-hidden",
+        fullHeight ? "min-h-screen flex items-center" : "py-16 md:py-24",
+        className
+      )} 
       {...props}
     >
       {container ? (

@@ -40,7 +40,7 @@ export function Projects() {
   )
 
   return (
-    <Section id="projects" className="bg-background">
+    <Section id="projects" className="bg-background" fullHeight>
       {/* Decorative gradient blob */}
       <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] bg-primary/10 blur-[120px] rounded-full opacity-50 pointer-events-none" />
       

@@ -29,7 +29,7 @@ export function About() {
   const duplicatedSkills = [...SKILLS, ...SKILLS]
 
   return (
-    <Section id="about" className="bg-secondary/20">
+    <Section id="about" className="bg-secondary/20" fullHeight>
        {/* Background decoration */}
        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-[500px] bg-primary/5 blur-[100px] -z-10" />
 
