@@ -34,24 +34,24 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Your Name | Portfolio',
+  title: 'Mokwa | Portfolio',
   description: 'Personal portfolio showcasing my work and skills',
   keywords: ['portfolio', 'developer', 'designer', 'freelancer'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  authors: [{ name: 'Mokwa' }],
+  creator: 'Mokwa',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://yourwebsite.com',
-    title: 'Your Name | Portfolio',
+    url: 'https://mokwa.dev',
+    title: 'Mokwa | Portfolio',
     description: 'Personal portfolio showcasing my work and skills',
-    siteName: 'Your Name Portfolio',
+    siteName: 'Mokwa Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Your Name | Portfolio',
+    title: 'Mokwa | Portfolio',
     description: 'Personal portfolio showcasing my work and skills',
-    creator: '@yourtwitter',
+    creator: '@mokwa',
   },
 };
 
@@ -77,10 +77,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <div className="flex-grow">
+          <div className="flex-grow pt-20 md:pt-24">
             {children}
+            <Footer />
           </div>
-          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>
