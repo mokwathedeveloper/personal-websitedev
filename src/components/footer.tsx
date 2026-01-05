@@ -8,13 +8,13 @@ import { Github, Linkedin, Twitter, Heart } from "lucide-react"
 export function Footer() {
   return (
     <footer className="border-t bg-background/50 backdrop-blur-xl">
-      <div className="container px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <div className="container px-4 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2 space-y-4">
             <Link href="/" className="font-bold text-2xl tracking-tight flex items-center gap-2">
               {SITE_CONFIG.name}<span className="text-primary">.</span>
             </Link>
-            <p className="text-muted-foreground max-w-xs leading-relaxed">
+            <p className="text-muted-foreground max-w-xs leading-relaxed text-sm">
               Crafting digital experiences with a focus on motion, accessibility, and clean code.
             </p>
             <div className="flex gap-4">
@@ -34,8 +34,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading font-semibold mb-4">Navigation</h3>
-            <ul className="space-y-3">
+            <h3 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider">Navigation</h3>
+            <ul className="space-y-3 text-sm">
               {NAV_LINKS.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
@@ -47,8 +47,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3 text-muted-foreground">
+            <h3 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider">Legal</h3>
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
               </li>
@@ -59,11 +59,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+        <div className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
           <div className="flex items-center gap-1">
             <span>Built with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
+            <Heart className="w-3 h-3 text-red-500 fill-red-500 animate-pulse" />
             <span>using Next.js & Shadcn UI</span>
           </div>
         </div>
