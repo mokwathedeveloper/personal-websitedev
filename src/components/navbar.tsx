@@ -5,13 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { ModeToggle } from "@/components/mode-toggle"
-
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-]
+import { NAV_LINKS } from "@/lib/data"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false)
@@ -37,7 +31,7 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden md:flex gap-6 items-center">
-          {navItems.map((item) => (
+          {NAV_LINKS.map((item) => (
             <Link
               key={item.name}
               href={item.href}

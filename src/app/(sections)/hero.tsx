@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { SITE_CONFIG } from "@/lib/data"
+import Link from "next/link"
 
 export function Hero() {
   return (
@@ -24,7 +26,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
         >
-          Building digital <br className="hidden md:block" />
+          {SITE_CONFIG.title} <br className="hidden md:block" />
           <span className="text-primary">experiences</span> that matter.
         </motion.h1>
 
@@ -34,7 +36,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8"
         >
-          I'm a full-stack developer passionate about creating beautiful, functional, and user-centered digital products.
+          {SITE_CONFIG.description}
         </motion.p>
 
         <motion.div
@@ -43,11 +45,15 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <Button size="lg" className="gap-2">
-            View Projects <ArrowRight className="w-4 h-4" />
+          <Button size="lg" className="gap-2" asChild>
+            <Link href="#projects">
+              View Projects <ArrowRight className="w-4 h-4" />
+            </Link>
           </Button>
-          <Button size="lg" variant="outline">
-            Contact Me
+          <Button size="lg" variant="outline" asChild>
+            <Link href="#contact">
+              Contact Me
+            </Link>
           </Button>
         </motion.div>
       </div>
