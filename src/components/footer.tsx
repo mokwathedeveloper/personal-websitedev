@@ -2,23 +2,14 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { SITE_CONFIG, NAV_LINKS } from "@/lib/data"
-import { ArrowRight, Mail, Home, User, Briefcase } from "lucide-react"
+import { SITE_CONFIG, NAV_LINKS, NAV_ICONS } from "@/lib/data"
+import { ArrowRight, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { SocialLinks } from "@/components/social-links"
 
 export function Footer() {
-  const getIcon = (name: string) => {
-    switch (name) {
-      case "Home": return <Home className="w-4 h-4" />
-      case "About": return <User className="w-4 h-4" />
-      case "Projects": return <Briefcase className="w-4 h-4" />
-      case "Contact": return <Mail className="w-4 h-4" />
-      default: return <ArrowRight className="w-4 h-4" />
-    }
-  }
-
   return (
     <footer className="relative bg-muted/30 border-t pt-20 pb-10">
       <div className="container px-4">
@@ -59,7 +50,7 @@ export function Footer() {
         {/* Middle Section: Links */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="font-bold text-xl tracking-tight flex items-center gap-2 mb-4">
+            <Link href="/" className="font-bold text-xl tracking-tight flex items-center gap-2 mb-4 font-heading">
               {SITE_CONFIG.name}<span className="text-primary">.</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -70,14 +61,17 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Navigation</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              {NAV_LINKS.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="hover:text-primary transition-colors flex items-center gap-2">
-                    {getIcon(link.name)}
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const Icon = NAV_ICONS[link.name] || ArrowRight
+                return (
+                  <li key={link.name}>
+                    <Link href={link.href} className="hover:text-primary transition-colors flex items-center gap-2">
+                      <Icon className="w-4 h-4" />
+                      {link.name}
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </div>
 

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, Home, User, Briefcase, Layout, Layers, Server, Smartphone, Grid } from "lucide-react";
 
 export const SITE_CONFIG = {
   name: "Mokwa",
@@ -11,6 +11,21 @@ export const SITE_CONFIG = {
     twitter: "https://twitter.com",
     email: "mailto:mokwamoffatohuru@gmail.com",
   },
+};
+
+export const NAV_ICONS: Record<string, any> = {
+  Home: Home,
+  About: User,
+  Projects: Briefcase,
+  Contact: Mail,
+};
+
+export const CATEGORY_ICONS: Record<string, any> = {
+  All: Grid,
+  "Full Stack": Layout,
+  "Web App": Layers,
+  "AI/ML": Server,
+  Mobile: Smartphone,
 };
 
 export const CONTENT = {
