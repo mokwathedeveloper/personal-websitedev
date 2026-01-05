@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
     github: "https://github.com/mokwathedeveloper",
     linkedin: "https://www.linkedin.com/in/mokwa-dev/",
     twitter: "https://twitter.com",
-    email: "mailto:hello@mokwa.dev",
+    email: "mailto:mokwamoffatohuru@gmail.com",
   },
 };
 

@@ -32,7 +32,7 @@ export function Footer() {
               Let's turn your ideas into digital reality. I'm currently available for new projects and collaborations.
             </p>
             <Button size="lg" className="rounded-full gap-2" asChild>
-              <a href="mailto:hello@example.com">
+              <a href={SITE_CONFIG.socials.email}>
                 Start a Conversation <ArrowRight className="w-4 h-4" />
               </a>
             </Button>

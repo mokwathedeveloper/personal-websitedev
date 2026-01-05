@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 import { Loader2, Send, Mail, MapPin } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CONTENT } from "@/lib/data"
+import { CONTENT, SITE_CONFIG } from "@/lib/data"
 import { Section } from "@/components/ui/section"
 import { SectionHeading, SectionDescription } from "@/components/ui/typography"
 import { FadeIn } from "@/components/animation-wrapper"
@@ -74,7 +74,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <p className="text-muted-foreground">hello@example.com</p>
+                  <p className="text-muted-foreground">{SITE_CONFIG.socials.email.replace('mailto:', '')}</p>
                 </div>
               </div>
               
