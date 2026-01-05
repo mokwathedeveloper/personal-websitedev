@@ -3,68 +3,51 @@
 import * as React from "react"
 import Link from "next/link"
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/data"
-import { Github, Linkedin, Twitter, Heart } from "lucide-react"
+import { Github, Linkedin, Twitter } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background/50 backdrop-blur-xl">
-      <div className="container px-4 py-8 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2 space-y-4">
-            <Link href="/" className="font-bold text-2xl tracking-tight flex items-center gap-2">
+    <footer className="bg-background">
+      <div className="container px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center border-t border-muted pt-12">
+          <div className="flex flex-col items-center md:items-start gap-4">
+            <Link href="/" className="font-bold text-xl tracking-tight">
               {SITE_CONFIG.name}<span className="text-primary">.</span>
             </Link>
-            <p className="text-muted-foreground max-w-xs leading-relaxed text-sm">
-              Crafting digital experiences with a focus on motion, accessibility, and clean code.
+            <p className="text-muted-foreground text-sm text-center md:text-left">
+              Building the future of the web, one pixel at a time.
             </p>
-            <div className="flex gap-4">
-              <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-secondary hover:bg-primary/10 hover:text-primary transition-all">
-                <Github className="w-5 h-5" />
-                <span className="sr-only">GitHub</span>
-              </a>
-              <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-secondary hover:bg-primary/10 hover:text-primary transition-all">
-                <Linkedin className="w-5 h-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-              <a href={SITE_CONFIG.socials.twitter} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-secondary hover:bg-primary/10 hover:text-primary transition-all">
-                <Twitter className="w-5 h-5" />
-                <span className="sr-only">Twitter</span>
-              </a>
-            </div>
           </div>
 
-          <div>
-            <h3 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider">Navigation</h3>
-            <ul className="space-y-3 text-sm">
-              {NAV_LINKS.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <nav className="flex flex-wrap justify-center gap-6 text-sm font-medium">
+            {NAV_LINKS.map((link) => (
+              <Link key={link.name} href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
+                {link.name}
+              </Link>
+            ))}
+          </nav>
 
-          <div>
-            <h3 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider">Legal</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>
-                <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
-              </li>
-            </ul>
+          <div className="flex justify-center md:justify-end gap-4">
+            <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <Github className="w-5 h-5" />
+              <span className="sr-only">GitHub</span>
+            </a>
+            <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <Linkedin className="w-5 h-5" />
+              <span className="sr-only">LinkedIn</span>
+            </a>
+            <a href={SITE_CONFIG.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <Twitter className="w-5 h-5" />
+              <span className="sr-only">Twitter</span>
+            </a>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
-          <div className="flex items-center gap-1">
-            <span>Built with</span>
-            <Heart className="w-3 h-3 text-red-500 fill-red-500 animate-pulse" />
-            <span>using Next.js & Shadcn UI</span>
+        <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 font-semibold">
+          <p>© {new Date().getFullYear()} {SITE_CONFIG.name}</p>
+          <div className="flex gap-4">
+            <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
+            <Link href="#" className="hover:text-primary transition-colors">Terms</Link>
           </div>
         </div>
       </div>
