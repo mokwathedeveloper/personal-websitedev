@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Mail } from "lucide-react"
 import { SITE_CONFIG, CONTENT } from "@/lib/data"
@@ -9,6 +10,8 @@ import { Section } from "@/components/ui/section"
 import { SectionHeading, SectionDescription } from "@/components/ui/typography"
 import { FadeIn } from "@/components/animation-wrapper"
 import { SocialLinks } from "@/components/social-links"
+
+import Image from "next/image"
 
 export function Hero() {
   return (
@@ -20,9 +23,13 @@ export function Hero() {
           <div className="mb-8 relative inline-block">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />
             <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full border-4 border-background shadow-xl ring-4 ring-primary/10 overflow-hidden bg-muted flex items-center justify-center">
-               <span className="text-4xl font-bold bg-gradient-to-br from-primary to-primary/50 bg-clip-text text-transparent">
-                  {SITE_CONFIG.name.charAt(0)}
-               </span>
+               <Image 
+                 src="/images/profile.webp" 
+                 alt={SITE_CONFIG.name}
+                 fill
+                 className="object-cover"
+                 priority
+               />
             </div>
           </div>
         </FadeIn>
@@ -68,6 +75,23 @@ export function Hero() {
         <FadeIn delay={0.5}>
           <SocialLinks />
         </FadeIn>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold">Scroll</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent relative overflow-hidden">
+            <motion.div 
+              animate={{ translateY: ["-100%", "100%"] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+              className="absolute top-0 left-0 w-full h-1/2 bg-primary shadow-[0_0_8px_rgba(var(--primary),0.5)]"
+            />
+          </div>
+        </motion.div>
       </div>
     </Section>
   )
