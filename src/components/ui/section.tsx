@@ -12,14 +12,14 @@ export function Section({ children, id, className, container = true, fullHeight 
     <section 
       id={id} 
       className={cn(
-        "relative overflow-hidden",
+        "relative",
         fullHeight ? "min-h-screen flex items-center" : "py-16 md:py-24",
         className
       )} 
       {...props}
     >
       {container ? (
-        <div className="container relative z-10">
+        <div className="container relative z-10 py-12">
           {children}
         </div>
       ) : (

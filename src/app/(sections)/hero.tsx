@@ -116,14 +116,14 @@ export function Hero() {
         </FadeIn>
 
         <FadeIn delay={0.4}>
-          <div className="flex flex-col sm:flex-row gap-4 items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 items-center mb-12">
             <Button size="lg" className="gap-2 h-14 px-8 text-lg shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow rounded-full group" asChild>
               <Link href="/projects">
                 {CONTENT.hero.cta.primary} 
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2 h-14 px-8 text-lg bg-background/50 backdrop-blur-sm hover:bg-background/80 rounded-full" asChild>
+            <Button size="lg" variant="outline" className="gap-2 h-14 px-8 text-lg bg-background/50 backdrop-blur-sm hover:bg-background/80 rounded-full border-primary/20" asChild>
               <Link href="/contact">
                 {CONTENT.hero.cta.secondary} <Mail className="w-5 h-5" />
               </Link>
@@ -132,25 +132,8 @@ export function Hero() {
         </FadeIn>
 
         <FadeIn delay={0.5}>
-          <SocialLinks />
+          <SocialLinks className="justify-center" />
         </FadeIn>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
-        >
-          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold">Scroll</span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent relative overflow-hidden">
-            <motion.div 
-              animate={{ translateY: ["-100%", "100%"] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-              className="absolute top-0 left-0 w-full h-1/2 bg-primary shadow-[0_0_8px_rgba(var(--primary),0.5)]"
-            />
-          </div>
-        </motion.div>
       </div>
     </Section>
   )

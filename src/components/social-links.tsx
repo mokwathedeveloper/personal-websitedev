@@ -33,8 +33,8 @@ export function SocialLinks({ className, iconClassName }: SocialLinksProps) {
   ]
 
   return (
-    <TooltipProvider>
-      <div className={cn("flex gap-4 items-center", className)}>
+    <TooltipProvider delayDuration={0}>
+      <div className={cn("flex gap-4 items-center flex-wrap justify-center", className)}>
         {socials.map((social) => (
           <Tooltip key={social.name}>
             <TooltipTrigger asChild>
