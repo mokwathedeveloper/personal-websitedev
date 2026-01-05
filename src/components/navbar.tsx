@@ -2,13 +2,14 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { ModeToggle } from "@/components/mode-toggle"
 import { NAV_LINKS } from "@/lib/data"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false)
+  const pathname = usePathname()
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +36,10 @@ export function Navbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary",
+                pathname === item.href ? "text-primary" : "text-muted-foreground"
+              )}
             >
               {item.name}
             </Link>

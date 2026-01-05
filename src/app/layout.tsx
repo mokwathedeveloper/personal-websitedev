@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, Sora, Roboto_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { Navbar } from '@/components/navbar';
 import { cn } from '@/lib/utils';
 import './globals.css';
 
@@ -62,7 +63,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body 
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen bg-background font-sans antialiased flex flex-col',
           inter.variable,
           sora.variable,
           robotoMono.variable
@@ -74,7 +75,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Navbar />
+          <div className="flex-grow">
+            {children}
+          </div>
+          <footer className="py-6 text-center text-sm text-muted-foreground border-t">
+            <p>© {new Date().getFullYear()} Your Name. All rights reserved.</p>
+          </footer>
           <Toaster />
         </ThemeProvider>
       </body>
