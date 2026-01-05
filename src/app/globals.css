@@ -35,6 +35,10 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-roboto-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 @layer utilities {
@@ -43,6 +47,9 @@
   }
   .animate-shimmer {
     animation: shimmer 2s linear infinite;
+  }
+  .font-heading {
+    font-family: var(--font-heading);
   }
 }
 

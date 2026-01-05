@@ -3,6 +3,7 @@ import { Inter, Sora, Roboto_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { Navbar } from '@/components/navbar';
+import { Footer } from '@/components/footer';
 import { cn } from '@/lib/utils';
 import './globals.css';
 
@@ -79,9 +80,7 @@ export default function RootLayout({
           <div className="flex-grow">
             {children}
           </div>
-          <footer className="py-6 text-center text-sm text-muted-foreground border-t">
-            <p>© {new Date().getFullYear()} Your Name. All rights reserved.</p>
-          </footer>
+          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>
