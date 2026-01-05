@@ -56,7 +56,7 @@ export function Contact() {
   }
 
   return (
-    <Section id="contact" className="bg-background" fullHeight>
+    <Section id="contact" className="bg-background pt-20 lg:pt-0" fullHeight>
        {/* Decorative gradient blob */}
        <div className="absolute bottom-0 left-0 -z-10 h-[500px] w-[500px] bg-primary/5 blur-[120px] rounded-full opacity-50 pointer-events-none" />
 

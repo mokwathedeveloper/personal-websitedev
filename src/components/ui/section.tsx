@@ -5,21 +5,32 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   id?: string
   container?: boolean
   fullHeight?: boolean
+  centered?: boolean
 }
 
-export function Section({ children, id, className, container = true, fullHeight = false, ...props }: SectionProps) {
+export function Section({
+  children,
+  id,
+  className,
+  container = true,
+  fullHeight = false,
+  centered = true,
+  ...props
+}: SectionProps) {
   return (
     <section 
       id={id} 
       className={cn(
-        "relative w-full",
-        fullHeight ? "min-h-screen flex items-center pt-20 md:pt-0" : "py-20 md:py-32",
+        "relative w-full flex flex-col",
+        fullHeight && "min-h-screen",
+        centered && "justify-center",
+        !fullHeight && "py-20 md:py-32",
         className
       )} 
       {...props}
     >
       {container ? (
-        <div className="container relative z-10">
+        <div className="container relative z-10 w-full">
           {children}
         </div>
       ) : (

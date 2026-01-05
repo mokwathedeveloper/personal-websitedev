@@ -30,9 +30,10 @@ export function Hero() {
   return (
     <Section 
       id="home" 
-      className="min-h-screen flex items-center justify-center py-0" 
+      fullHeight 
       container={false}
       onMouseMove={handleMouseMove}
+      className="pt-20 lg:pt-0"
     >
       <RetroGrid />
       
@@ -50,7 +51,7 @@ export function Hero() {
         }}
       />
       
-      <div className="container relative z-10 flex flex-col items-center text-center">
+      <div className="container relative z-10 flex flex-col items-center text-center py-12">
         <FadeIn>
           <div className="mb-8 relative inline-block">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />
