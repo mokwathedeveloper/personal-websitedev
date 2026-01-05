@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen pt-20 md:pt-28">
+    <main>
       <ProjectsSection />
     </main>
   )

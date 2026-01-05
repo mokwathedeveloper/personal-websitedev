@@ -12,14 +12,14 @@ export function Section({ children, id, className, container = true, fullHeight 
     <section 
       id={id} 
       className={cn(
-        "relative",
-        fullHeight ? "min-h-screen flex items-center" : "py-16 md:py-24",
+        "relative w-full",
+        fullHeight ? "min-h-screen flex items-center pt-20 md:pt-0" : "py-20 md:py-32",
         className
       )} 
       {...props}
     >
       {container ? (
-        <div className="container relative z-10 py-12">
+        <div className="container relative z-10">
           {children}
         </div>
       ) : (

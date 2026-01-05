@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen flex flex-col justify-center pt-20 md:pt-0">
+    <main>
       <AboutSection />
     </main>
   )

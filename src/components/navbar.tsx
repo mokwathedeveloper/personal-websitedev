@@ -24,7 +24,7 @@ export function Navbar() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 10)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -33,45 +33,49 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 border-b",
+        "fixed top-0 w-full z-50 transition-all duration-500",
         isScrolled 
-          ? "bg-background/80 backdrop-blur-md border-border shadow-sm py-2" 
-          : "bg-transparent border-transparent py-4"
+          ? "bg-background/70 backdrop-blur-xl border-b border-primary/10 shadow-[0_2px_20px_-10px_rgba(0,0,0,0.1)] py-3" 
+          : "bg-transparent py-6"
       )}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="font-bold text-2xl tracking-tight flex items-center gap-2 group">
-          <span className="bg-primary text-primary-foreground w-10 h-10 flex items-center justify-center rounded-xl group-hover:rotate-6 transition-transform duration-300 font-heading">
+      <div className="container flex items-center justify-between">
+        <Link href="/" className="font-bold text-2xl tracking-tighter flex items-center gap-2 group shrink-0">
+          <div className="bg-primary text-primary-foreground w-10 h-10 flex items-center justify-center rounded-xl group-hover:rotate-[10deg] transition-transform duration-500 shadow-lg shadow-primary/20 font-heading">
             {SITE_CONFIG.name.charAt(0)}
-          </span>
+          </div>
           <span className="hidden sm:inline-block font-heading">
             {SITE_CONFIG.name}<span className="text-primary">.</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-1 items-center bg-muted/50 p-1 rounded-full border border-primary/10">
+        <nav className="hidden md:flex gap-1 items-center bg-muted/40 backdrop-blur-md p-1.5 rounded-full border border-primary/5 shadow-inner">
           <TooltipProvider delayDuration={0}>
             {NAV_LINKS.map((item) => {
               const Icon = NAV_ICONS[item.name] || NAV_ICONS.Home
+              const isActive = pathname === item.href
               return (
                 <Tooltip key={item.name}>
                   <TooltipTrigger asChild>
                     <Link
                       href={item.href}
                       className={cn(
-                        "flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 relative",
-                        pathname === item.href 
-                          ? "bg-primary text-primary-foreground shadow-md scale-105" 
-                          : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                        "flex items-center gap-2 px-5 py-2 rounded-full transition-all duration-500 relative overflow-hidden group/nav",
+                        isActive 
+                          ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-[1.02]" 
+                          : "text-muted-foreground hover:text-primary"
                       )}
                     >
-                      <Icon className="h-5 w-5" />
-                      <span className="hidden lg:inline text-sm font-medium">{item.name}</span>
+                      <Icon className={cn("h-4 w-4 transition-transform duration-500 group-hover/nav:scale-110", isActive && "scale-110")} />
+                      <span className="hidden lg:inline text-xs font-bold uppercase tracking-widest leading-none">{item.name}</span>
+                      {!isActive && (
+                        <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover/nav:translate-y-0 transition-transform duration-500" />
+                      )}
                     </Link>
                   </TooltipTrigger>
-                  <TooltipContent side="bottom" className="lg:hidden">
-                    <p>{item.name}</p>
+                  <TooltipContent side="bottom" className="lg:hidden bg-background/95 backdrop-blur-md border-primary/10">
+                    <p className="text-[10px] font-bold uppercase tracking-widest">{item.name}</p>
                   </TooltipContent>
                 </Tooltip>
               )
@@ -79,47 +83,56 @@ export function Navbar() {
           </TooltipProvider>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:block h-8 w-px bg-primary/10 mx-1" />
           <ModeToggle />
           
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
+              <Button variant="ghost" size="icon" className="md:hidden rounded-xl hover:bg-primary/10 hover:text-primary transition-colors">
+                <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <SheetHeader className="text-left mb-12">
-                <SheetTitle className="text-2xl font-bold flex items-center gap-2 font-heading">
-                   <div className="bg-primary text-primary-foreground w-8 h-8 flex items-center justify-center rounded-lg text-sm">
+            <SheetContent side="right" className="w-full sm:w-[350px] border-l-primary/10 bg-background/95 backdrop-blur-2xl">
+              <SheetHeader className="text-left mb-16">
+                <SheetTitle className="text-3xl font-bold flex items-center gap-3 font-heading tracking-tighter">
+                   <div className="bg-primary text-primary-foreground w-10 h-10 flex items-center justify-center rounded-xl text-lg shadow-lg shadow-primary/20">
                     {SITE_CONFIG.name.charAt(0)}
                   </div>
                   {SITE_CONFIG.name}<span className="text-primary">.</span>
                 </SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-col gap-3">
                 {NAV_LINKS.map((item) => {
                   const Icon = NAV_ICONS[item.name] || NAV_ICONS.Home
+                  const isActive = pathname === item.href
                   return (
                     <Link
                       key={item.name}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        "flex items-center gap-4 text-xl font-medium transition-colors hover:text-primary p-4 rounded-2xl",
-                        pathname === item.href 
-                          ? "text-primary bg-primary/10" 
-                          : "text-muted-foreground hover:bg-muted"
+                        "flex items-center gap-5 text-xl font-bold font-heading p-5 rounded-2xl transition-all duration-500",
+                        isActive 
+                          ? "bg-primary text-primary-foreground shadow-xl shadow-primary/20 translate-x-2" 
+                          : "text-muted-foreground hover:text-primary hover:bg-primary/5 hover:translate-x-1"
                       )}
                     >
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-7 w-7" />
                       {item.name}
                     </Link>
                   )
                 })}
               </nav>
+              
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="p-6 rounded-3xl bg-primary/5 border border-primary/10">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-2">Version</p>
+                  <p className="text-lg font-heading font-bold">1.0.0 Stable</p>
+                </div>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
