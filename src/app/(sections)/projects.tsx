@@ -19,6 +19,8 @@ import { Section } from "@/components/ui/section"
 import { SectionHeading, SectionDescription } from "@/components/ui/typography"
 import { FadeIn } from "@/components/animation-wrapper"
 
+import { SpotlightCard } from "@/components/ui/spotlight-card"
+
 const categories = ["All", ...new Set(PROJECTS.map((project) => project.category))]
 
 const getCategoryIcon = (category: string) => {
@@ -93,10 +95,7 @@ export function Projects() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className="h-full flex flex-col overflow-hidden group relative border-transparent bg-card/50 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
-                {/* Gradient Border Effect */}
-                <div className="absolute inset-0 rounded-lg p-[1px] bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-primary/30 group-hover:via-primary/10 group-hover:to-primary/30 -z-10 transition-all duration-500" />
-                
+              <SpotlightCard className="h-full flex flex-col group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 border-primary/10" spotlightColor="rgba(var(--primary), 0.1)">
                 <div className="relative aspect-video overflow-hidden bg-muted/50 group-hover:shadow-inner transition-all">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-700 ease-out">
                     <Code2 className="h-16 w-16 text-primary/20" />
@@ -142,7 +141,7 @@ export function Projects() {
                     </a>
                   </Button>
                 </CardFooter>
-              </Card>
+              </SpotlightCard>
             </motion.div>
           ))}
         </AnimatePresence>

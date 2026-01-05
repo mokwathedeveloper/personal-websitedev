@@ -3,7 +3,7 @@
 import { SKILLS, EXPERIENCES, CONTENT } from "@/lib/data"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Briefcase, GraduationCap, Code, Atom, Zap, FileCode, Palette, Server, Database, Container, Cloud, GitBranch, Terminal } from "lucide-react"
+import { Briefcase, GraduationCap, Code, Atom, Zap, FileCode, Palette, Server, Database, Container, Cloud, GitBranch, Terminal, Sparkles } from "lucide-react"
 import { Section } from "@/components/ui/section"
 import { SectionHeading, SectionDescription } from "@/components/ui/typography"
 import { FadeIn } from "@/components/animation-wrapper"
@@ -24,14 +24,15 @@ const getSkillIcon = (skill: string) => {
   }
 }
 
+import { SpotlightCard } from "@/components/ui/spotlight-card"
+
 export function About() {
-  // Duplicate skills to ensure seamless loop
   const duplicatedSkills = [...SKILLS, ...SKILLS]
 
   return (
-    <Section id="about" className="bg-secondary/20" fullHeight>
+    <Section id="about" className="bg-background" fullHeight>
        {/* Background decoration */}
-       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-[500px] bg-primary/5 blur-[100px] -z-10" />
+       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] -z-10 rounded-full" />
 
       <FadeIn>
         <div className="text-center mb-16">
@@ -42,98 +43,90 @@ export function About() {
         </div>
       </FadeIn>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div className="space-y-8">
-          <FadeIn delay={0.1} direction="left">
-            <div>
-              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2 font-heading">
-                <span className="p-2 bg-primary/10 rounded-lg text-primary">
-                  <GraduationCap className="w-5 h-5" />
-                </span>
-                {CONTENT.about.background.title}
-              </h3>
-              <Card className="border-none shadow-sm bg-background/50 backdrop-blur-sm">
-                <CardContent className="pt-6">
-                  <div className="prose dark:prose-invert text-muted-foreground leading-relaxed text-sm">
-                    <p className="mb-4">
-                      {CONTENT.about.background.text1}
-                    </p>
-                    <p>
-                      {CONTENT.about.background.text2}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[12rem]">
+        {/* Background Box */}
+        <FadeIn delay={0.1} className="md:col-span-2 lg:col-span-2 lg:row-span-2">
+          <SpotlightCard className="h-full p-8 flex flex-col justify-center">
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3 font-heading">
+              <span className="p-2 bg-primary/10 rounded-xl text-primary">
+                <GraduationCap className="w-6 h-6" />
+              </span>
+              {CONTENT.about.background.title}
+            </h3>
+            <div className="prose dark:prose-invert text-muted-foreground leading-relaxed text-base">
+              <p className="mb-4">
+                {CONTENT.about.background.text1}
+              </p>
+              <p>
+                {CONTENT.about.background.text2}
+              </p>
             </div>
-          </FadeIn>
+          </SpotlightCard>
+        </FadeIn>
 
-          <FadeIn delay={0.2} direction="left">
-            <div>
-              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2 font-heading">
-                <span className="p-2 bg-primary/10 rounded-lg text-primary">
-                  <Code className="w-5 h-5" />
-                </span>
-                {CONTENT.about.skillsTitle}
-              </h3>
-              
-              {/* Marquee Container */}
-              <div className="relative flex overflow-hidden py-4 mask-linear-gradient">
-                <div className="absolute left-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-background to-transparent" />
-                <div className="absolute right-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-l from-background to-transparent" />
-                
-                <div className="flex gap-4 whitespace-nowrap animate-marquee">
-                  {duplicatedSkills.map((skill, i) => (
-                    <div
-                      key={`${skill}-${i}`}
-                      className="flex items-center gap-2 px-4 py-2 rounded-full border bg-background/50 backdrop-blur-sm text-sm font-medium shadow-sm hover:border-primary/50 transition-colors"
-                    >
-                       {getSkillIcon(skill)}
-                       <span>{skill}</span>
-                    </div>
-                  ))}
-                </div>
+        {/* Skills Box */}
+        <FadeIn delay={0.2} className="md:col-span-1 lg:col-span-2">
+          <SpotlightCard className="h-full p-8 flex flex-col justify-center overflow-hidden">
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2 font-heading">
+              <Code className="w-5 h-5 text-primary" />
+              {CONTENT.about.skillsTitle}
+            </h3>
+            
+            <div className="relative flex overflow-hidden py-2 mask-linear-gradient">
+              <div className="flex gap-3 whitespace-nowrap animate-marquee">
+                {duplicatedSkills.map((skill, i) => (
+                  <div
+                    key={`${skill}-${i}`}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/10 bg-background/50 backdrop-blur-sm text-sm font-medium shadow-sm"
+                  >
+                     {getSkillIcon(skill)}
+                     <span>{skill}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </FadeIn>
-        </div>
+          </SpotlightCard>
+        </FadeIn>
 
-        <FadeIn delay={0.3} direction="right">
-          <div>
-            <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 font-heading">
-              <span className="p-2 bg-primary/10 rounded-lg text-primary">
-                <Briefcase className="w-5 h-5" />
-              </span>
+        {/* Experience Box - Takes up vertical space */}
+        <FadeIn delay={0.3} className="md:col-span-2 lg:col-span-2 lg:row-span-2">
+          <SpotlightCard className="h-full p-8 overflow-y-auto custom-scrollbar">
+            <h3 className="text-xl font-bold mb-8 flex items-center gap-3 font-heading sticky top-0 bg-background/50 backdrop-blur-md z-10 py-2">
+              <Briefcase className="w-5 h-5 text-primary" />
               {CONTENT.about.experienceTitle}
             </h3>
             <div className="space-y-8 relative pl-6 border-l-2 border-primary/20">
               {EXPERIENCES.map((exp, index) => (
                 <div key={index} className="relative">
-                  {/* Timeline Dot */}
                   <span className="absolute -left-[31px] top-1 h-4 w-4 rounded-full border-4 border-background bg-primary" />
-                  
-                  <Card className="relative overflow-hidden border-none bg-background/50 shadow-sm hover:shadow-md transition-all duration-300">
-                    <CardHeader className="pb-2">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1 gap-2">
-                        <CardTitle className="text-base font-bold text-foreground">{exp.role}</CardTitle>
-                        <Badge variant="secondary" className="w-fit text-xs font-normal">
-                          {exp.period}
-                        </Badge>
-                      </div>
-                      <div className="text-sm font-medium text-primary flex items-center gap-2">
-                        <Briefcase className="w-3 h-3" />
-                        {exp.company}
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {exp.description}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <div className="space-y-1">
+                    <h4 className="font-bold text-foreground">{exp.role}</h4>
+                    <div className="flex items-center gap-2 text-sm text-primary font-medium">
+                      <Briefcase className="w-3 h-3" />
+                      {exp.company}
+                    </div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider">{exp.period}</div>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+                      {exp.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
+          </SpotlightCard>
+        </FadeIn>
+
+        {/* Dynamic Badge Box */}
+        <FadeIn delay={0.4} className="hidden lg:block lg:col-span-2">
+          <SpotlightCard className="h-full p-8 flex items-center justify-between bg-primary/5 border-primary/20">
+            <div className="space-y-1">
+              <h4 className="text-3xl font-bold font-heading">10+</h4>
+              <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">Projects Completed</p>
+            </div>
+            <div className="h-12 w-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary rotate-12">
+              <Sparkles className="w-6 h-6" />
+            </div>
+          </SpotlightCard>
         </FadeIn>
       </div>
     </Section>

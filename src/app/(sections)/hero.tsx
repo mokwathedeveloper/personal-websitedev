@@ -5,18 +5,50 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Mail } from "lucide-react"
 import { SITE_CONFIG, CONTENT } from "@/lib/data"
 import Link from "next/link"
+import Image from "next/image"
 import RetroGrid from "@/components/ui/retro-grid"
 import { Section } from "@/components/ui/section"
 import { SectionHeading, SectionDescription } from "@/components/ui/typography"
 import { FadeIn } from "@/components/animation-wrapper"
 import { SocialLinks } from "@/components/social-links"
-
-import Image from "next/image"
+import { useMotionValue, useMotionTemplate } from "framer-motion"
 
 export function Hero() {
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  function handleMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect()
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
+  }
+
   return (
-    <Section id="home" className="min-h-screen flex items-center justify-center py-0" container={false}>
+    <Section 
+      id="home" 
+      className="min-h-screen flex items-center justify-center py-0" 
+      container={false}
+      onMouseMove={handleMouseMove}
+    >
       <RetroGrid />
+      
+      {/* Background Spotlight */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-0 transition duration-300 opacity-0 lg:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              800px circle at ${mouseX}px ${mouseY}px,
+              rgba(var(--primary), 0.05),
+              transparent 80%
+            )
+          `,
+        }}
+      />
       
       <div className="container relative z-10 flex flex-col items-center text-center">
         <FadeIn>
@@ -42,12 +74,39 @@ export function Hero() {
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <SectionHeading className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-8">
-            {CONTENT.hero.title.first} <br className="hidden md:block" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 animate-gradient-x">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 font-heading overflow-hidden leading-tight">
+            {CONTENT.hero.title.first.split(" ").map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                className="inline-block mr-[0.2em]"
+              >
+                {word}
+              </motion.span>
+            ))}
+            <br className="hidden md:block" />
+            <motion.span 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 animate-gradient-x inline-block"
+            >
               {CONTENT.hero.title.highlight}
-            </span> {CONTENT.hero.title.last}
-          </SectionHeading>
+            </motion.span>{" "}
+            {CONTENT.hero.title.last.split(" ").map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 + i * 0.1 }}
+                className="inline-block mr-[0.2em]"
+              >
+                {word}
+              </motion.span>
+            ))}
+          </h1>
         </FadeIn>
 
         <FadeIn delay={0.3}>

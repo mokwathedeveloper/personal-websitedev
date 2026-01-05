@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Sora, Roboto_Mono } from 'next/font/google';
+import { Inter, Syne, Roboto_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { Navbar } from '@/components/navbar';
@@ -14,10 +14,11 @@ const inter = Inter({
   display: 'swap',
 });
 
-const sora = Sora({
+const syne = Syne({
   subsets: ['latin'],
-  variable: '--font-sora',
+  variable: '--font-syne',
   display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
 const robotoMono = Roboto_Mono({
@@ -66,7 +67,7 @@ export default function RootLayout({
         className={cn(
           'min-h-screen bg-background font-sans antialiased flex flex-col',
           inter.variable,
-          sora.variable,
+          syne.variable,
           robotoMono.variable
         )}
       >
