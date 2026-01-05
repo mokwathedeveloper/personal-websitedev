@@ -3,10 +3,10 @@
 import * as React from "react"
 import Link from "next/link"
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/data"
-import { Github, Linkedin, Twitter, ArrowRight, Mail, Home, User, Briefcase } from "lucide-react"
+import { ArrowRight, Mail, Home, User, Briefcase } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { SocialLinks } from "@/components/social-links"
 
 export function Footer() {
   const getIcon = (name: string) => {
@@ -83,46 +83,9 @@ export function Footer() {
 
           <div>
             <h4 className="font-semibold mb-4">Socials</h4>
-            <TooltipProvider>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2 w-fit">
-                        <Github className="w-4 h-4" /> GitHub
-                      </a>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Check out my code</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </li>
-                <li>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2 w-fit">
-                        <Linkedin className="w-4 h-4" /> LinkedIn
-                      </a>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Connect professionally</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </li>
-                <li>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <a href={SITE_CONFIG.socials.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2 w-fit">
-                        <Twitter className="w-4 h-4" /> Twitter
-                      </a>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Follow for updates</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </li>
-              </ul>
-            </TooltipProvider>
+            <div className="flex flex-col gap-3">
+               <SocialLinks className="flex-col items-start gap-3" iconClassName="border-none bg-transparent p-0 hover:bg-transparent shadow-none w-auto h-auto rounded-none justify-start" />
+            </div>
           </div>
 
           <div>

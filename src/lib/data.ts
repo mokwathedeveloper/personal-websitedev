@@ -1,15 +1,15 @@
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 export const SITE_CONFIG = {
-  name: "Your Name",
+  name: "Mokwa",
   title: "Full Stack Developer",
   description: "I build accessible, pixel-perfect, performant, and responsive web experiences.",
-  url: "https://yourwebsite.com",
+  url: "https://mokwa.dev",
   socials: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/mokwathedeveloper",
+    linkedin: "https://www.linkedin.com/in/mokwa-dev/",
     twitter: "https://twitter.com",
-    email: "mailto:hello@example.com",
+    email: "mailto:hello@mokwa.dev",
   },
 };
 

@@ -51,8 +51,23 @@
   .animate-shimmer {
     animation: shimmer 2s linear infinite;
   }
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
   .font-heading {
     font-family: var(--font-heading);
+  }
+  .mask-linear-gradient {
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
