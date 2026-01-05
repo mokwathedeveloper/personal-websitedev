@@ -3,79 +3,113 @@
 import * as React from "react"
 import Link from "next/link"
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/data"
-import { Github, Linkedin, Twitter, ArrowUpRight } from "lucide-react"
+import { Github, Linkedin, Twitter, ArrowRight, Mail } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background py-24 pb-12 overflow-hidden relative">
-      <div className="container px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 mb-16 lg:mb-24">
-          <div className="space-y-8">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight">
-              Let's build something <br />
-              <span className="text-primary-foreground/50">extraordinary.</span>
+    <footer className="relative bg-muted/30 border-t pt-20 pb-10">
+      <div className="container px-4">
+        {/* Top Section: CTA & Newsletter */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-heading font-bold tracking-tight">
+              Ready to create something <span className="text-primary">extraordinary?</span>
             </h2>
-            <div className="flex gap-4">
-               <a 
-                 href={`mailto:${SITE_CONFIG.socials.email.replace('mailto:', '')}`} 
-                 className="inline-flex items-center gap-2 text-lg font-medium border-b border-primary-foreground/30 pb-1 hover:text-primary-foreground hover:border-primary-foreground transition-all"
-               >
-                 {SITE_CONFIG.socials.email.replace('mailto:', '')}
-                 <ArrowUpRight className="w-5 h-5" />
-               </a>
+            <p className="text-muted-foreground max-w-md text-lg">
+              Let's turn your ideas into digital reality. I'm currently available for new projects and collaborations.
+            </p>
+            <Button size="lg" className="rounded-full gap-2" asChild>
+              <a href="mailto:hello@example.com">
+                Start a Conversation <ArrowRight className="w-4 h-4" />
+              </a>
+            </Button>
+          </div>
+
+          <div className="bg-card p-8 rounded-2xl border shadow-sm">
+            <h3 className="font-semibold text-lg mb-2">Stay in the loop</h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              Subscribe to my newsletter for the latest updates on tech, design, and development.
+            </p>
+            <div className="flex gap-2">
+              <Input 
+                placeholder="Enter your email" 
+                className="bg-background" 
+              />
+              <Button>Subscribe</Button>
             </div>
           </div>
+        </div>
 
-          <div className="grid grid-cols-2 gap-12">
-             <div className="space-y-6">
-               <h3 className="text-sm uppercase tracking-widest font-semibold text-primary-foreground/50">Navigation</h3>
-               <ul className="space-y-4">
-                 {NAV_LINKS.map((link) => (
-                   <li key={link.name}>
-                     <Link href={link.href} className="text-lg hover:text-primary-foreground/70 transition-colors">
-                       {link.name}
-                     </Link>
-                   </li>
-                 ))}
-               </ul>
-             </div>
-             <div className="space-y-6">
-               <h3 className="text-sm uppercase tracking-widest font-semibold text-primary-foreground/50">Socials</h3>
-               <ul className="space-y-4">
-                 <li>
-                   <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" className="text-lg hover:text-primary-foreground/70 transition-colors flex items-center gap-2">
-                     GitHub
-                   </a>
-                 </li>
-                 <li>
-                   <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-lg hover:text-primary-foreground/70 transition-colors flex items-center gap-2">
-                     LinkedIn
-                   </a>
-                 </li>
-                 <li>
-                   <a href={SITE_CONFIG.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-lg hover:text-primary-foreground/70 transition-colors flex items-center gap-2">
-                     Twitter
-                   </a>
-                 </li>
-               </ul>
-             </div>
+        {/* Divider */}
+        <div className="h-px w-full bg-border/50 mb-12" />
+
+        {/* Middle Section: Links */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="font-bold text-xl tracking-tight flex items-center gap-2 mb-4">
+              {SITE_CONFIG.name}<span className="text-primary">.</span>
+            </Link>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Crafting digital experiences with a focus on motion, accessibility, and clean code.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">Navigation</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              {NAV_LINKS.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="hover:text-primary transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">Socials</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li>
+                <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <Github className="w-4 h-4" /> GitHub
+                </a>
+              </li>
+              <li>
+                <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <Linkedin className="w-4 h-4" /> LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href={SITE_CONFIG.socials.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <Twitter className="w-4 h-4" /> Twitter
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">Contact</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li>
+                <a href={`mailto:${SITE_CONFIG.socials.email.replace('mailto:', '')}`} className="hover:text-primary transition-colors flex items-center gap-2">
+                  <Mail className="w-4 h-4" /> {SITE_CONFIG.socials.email.replace('mailto:', '')}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/40">
-          <p>© {new Date().getFullYear()} {SITE_CONFIG.name}.</p>
-          <div className="flex gap-8">
-            <Link href="#" className="hover:text-primary-foreground/80 transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-primary-foreground/80 transition-colors">Terms & Conditions</Link>
+        {/* Bottom Section: Copyright */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border/50 text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <Link href="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
           </div>
         </div>
-      </div>
-
-      {/* Big Watermark Text */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none opacity-[0.03]">
-        <h1 className="text-[15vw] font-bold font-heading leading-none text-center whitespace-nowrap select-none">
-          {SITE_CONFIG.name.split(' ')[0]}
-        </h1>
       </div>
     </footer>
   )
