@@ -134,7 +134,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
     background-image: radial-gradient(hsl(var(--muted-foreground) / 0.15) 0.5px, transparent 0.5px);
     background-size: 24px 24px;
     background-position: 0 0;

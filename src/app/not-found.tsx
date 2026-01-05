@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { Home } from 'lucide-react'
 
 export default function NotFound() {
   return (
@@ -10,9 +11,9 @@ export default function NotFound() {
         The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
       </p>
       <div className="mt-8">
-        <Button asChild size="lg">
+        <Button asChild size="lg" className="gap-2">
           <Link href="/">
-            Go back home
+            <Home className="w-4 h-4" /> Go back home
           </Link>
         </Button>
       </div>
