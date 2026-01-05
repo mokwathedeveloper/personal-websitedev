@@ -19,15 +19,34 @@ import { Section } from "@/components/ui/section"
 import { SectionHeading, SectionDescription } from "@/components/ui/typography"
 import { FadeIn } from "@/components/animation-wrapper"
 import { SpotlightCard } from "@/components/ui/spotlight-card"
+import { getRepoStats } from "@/lib/github"
+import { Star, GitFork } from "lucide-react"
 
 const categories = ["All", ...new Set(PROJECTS.map((project) => project.category))]
 
 export function Projects() {
   const [filter, setFilter] = React.useState("All")
+  const [repoStats, setRepoStats] = React.useState<Record<number, { stars: number, forks: number }>>({})
 
   const filteredProjects = PROJECTS.filter(
     (project) => filter === "All" || project.category === filter
   )
+
+  React.useEffect(() => {
+    const fetchAllStats = async () => {
+      const stats: Record<number, { stars: number, forks: number }> = {}
+      for (const project of PROJECTS) {
+        if (project.github && project.github.includes("github.com")) {
+          const data = await getRepoStats(project.github)
+          if (data) {
+            stats[project.id] = { stars: data.stars, forks: data.forks }
+          }
+        }
+      }
+      setRepoStats(stats)
+    }
+    fetchAllStats()
+  }, [])
 
   return (
     <Section id="projects" className="bg-background pt-24 lg:pt-32" fullHeight>
@@ -105,7 +124,23 @@ export function Projects() {
                   </div>
                   
                   <CardHeader className="space-y-3 p-6 md:p-8 pb-4">
-                    <CardTitle className="text-xl md:text-2xl font-bold group-hover:text-primary transition-colors duration-500 font-heading tracking-tight">{project.title}</CardTitle>
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="text-xl md:text-2xl font-bold group-hover:text-primary transition-colors duration-500 font-heading tracking-tight">{project.title}</CardTitle>
+                      <div className="flex gap-3 text-xs text-muted-foreground font-bold">
+                        {repoStats[project.id] && (
+                          <>
+                            <span className="flex items-center gap-1 hover:text-primary transition-colors">
+                              <Star className="w-3 h-3 fill-primary/20 text-primary" />
+                              {repoStats[project.id].stars}
+                            </span>
+                            <span className="flex items-center gap-1 hover:text-primary transition-colors">
+                              <GitFork className="w-3 h-3 text-primary" />
+                              {repoStats[project.id].forks}
+                            </span>
+                          </>
+                        )}
+                      </div>
+                    </div>
                     <CardDescription className="text-sm leading-relaxed line-clamp-2 text-muted-foreground/80">
                       {project.description}
                     </CardDescription>

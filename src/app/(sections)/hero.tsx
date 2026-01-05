@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Mail } from "lucide-react"
@@ -16,6 +17,25 @@ import { useMotionValue, useMotionTemplate } from "framer-motion"
 export function Hero() {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
+  const [lastActivity, setLastActivity] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchActivity = async () => {
+      try {
+        const username = SITE_CONFIG.socials.github.split("/").pop()
+        const response = await fetch(`https://api.github.com/users/${username}/events/public`)
+        const data = await response.json()
+        if (data && data.length > 0) {
+          const lastEvent = data[0]
+          const date = new Date(lastEvent.created_at)
+          setLastActivity(`Last active ${date.toLocaleDateString()}`)
+        }
+      } catch (error) {
+        console.error("Error fetching activity:", error)
+      }
+    }
+    fetchActivity()
+  }, [])
 
   function handleMouseMove({
     currentTarget,
@@ -64,6 +84,12 @@ export function Hero() {
                  priority
                />
             </div>
+            {lastActivity && (
+              <div className="absolute -bottom-2 -right-2 bg-background border border-primary/20 px-3 py-1 rounded-full shadow-lg z-20 flex items-center gap-2">
+                <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[10px] font-bold uppercase tracking-tight text-foreground">{lastActivity}</span>
+              </div>
+            )}
           </div>
         </FadeIn>
 
