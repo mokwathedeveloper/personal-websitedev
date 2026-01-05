@@ -1,12 +1,14 @@
 "use client"
 
-import { SKILLS, EXPERIENCES, CONTENT } from "@/lib/data"
+import { useEffect, useState } from "react"
+import { SKILLS, EXPERIENCES, CONTENT, SITE_CONFIG } from "@/lib/data"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Briefcase, GraduationCap, Code, Atom, Zap, FileCode, Palette, Server, Database, Container, Cloud, GitBranch, Terminal, Sparkles } from "lucide-react"
 import { Section } from "@/components/ui/section"
-import { SectionHeading, SectionDescription } from "@/components/ui/typography"
+import { SectionHeading, SectionDescription, SectionLabel } from "@/components/ui/typography"
 import { FadeIn } from "@/components/animation-wrapper"
+import { SpotlightCard } from "@/components/ui/spotlight-card"
 
 const getSkillIcon = (skill: string) => {
   switch (skill) {
@@ -24,12 +26,25 @@ const getSkillIcon = (skill: string) => {
   }
 }
 
-import { SpotlightCard } from "@/components/ui/spotlight-card"
-
-import { SectionLabel } from "@/components/ui/typography"
-
 export function About() {
   const duplicatedSkills = [...SKILLS, ...SKILLS]
+  const [repoCount, setRepoCount] = useState<number | null>(null)
+
+  useEffect(() => {
+    const fetchGithubData = async () => {
+      try {
+        const username = SITE_CONFIG.socials.github.split("/").pop()
+        const response = await fetch(`https://api.github.com/users/${username}`)
+        const data = await response.json()
+        if (data.public_repos) {
+          setRepoCount(data.public_repos)
+        }
+      } catch (error) {
+        console.error("Error fetching GitHub data:", error)
+      }
+    }
+    fetchGithubData()
+  }, [])
 
   return (
     <Section id="about" className="bg-background pt-20 lg:pt-0" fullHeight>
@@ -101,7 +116,7 @@ export function About() {
             <div className="space-y-10 relative pl-8 border-l-2 border-primary/10 ml-2">
               {EXPERIENCES.map((exp, index) => (
                 <div key={index} className="relative">
-                  <span className="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-background bg-primary shadow-lg shadow-primary/20" />
+                  <span className="absolute -left-[31px] top-1.5 h-5 w-5 rounded-full border-4 border-background bg-primary shadow-lg shadow-primary/20" />
                   <div className="space-y-2">
                     <h4 className="font-bold text-foreground text-base md:text-lg tracking-tight">{exp.role}</h4>
                     <div className="flex items-center gap-2 text-sm md:text-base text-primary font-bold">
@@ -123,8 +138,10 @@ export function About() {
         <FadeIn delay={0.4} className="hidden lg:block lg:col-span-2 h-full">
           <SpotlightCard className="h-full p-10 flex items-center justify-between bg-primary/5 border-primary/10">
             <div className="space-y-2">
-              <h4 className="text-4xl md:text-5xl font-bold font-heading tracking-tighter text-primary">10+</h4>
-              <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-[0.2em] font-bold">Projects Engineered</p>
+              <h4 className="text-4xl md:text-5xl font-bold font-heading tracking-tighter text-primary">
+                {repoCount !== null ? `${repoCount}+` : "10+"}
+              </h4>
+              <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-[0.2em] font-bold">Open Source Repos</p>
             </div>
             <div className="h-16 w-16 rounded-3xl bg-primary/10 flex items-center justify-center text-primary rotate-12 shadow-inner border border-primary/10">
               <Sparkles className="w-8 h-8" />
