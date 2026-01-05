@@ -77,7 +77,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <div className="flex-grow pt-20 md:pt-24">
+          <div className="flex-grow">
             {children}
             <Footer />
           </div>

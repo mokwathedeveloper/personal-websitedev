@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="pt-16 min-h-screen">
+    <main className="pt-20 md:pt-28 min-h-screen">
       <AboutSection />
     </main>
   )

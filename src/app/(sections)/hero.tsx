@@ -15,7 +15,7 @@ import Image from "next/image"
 
 export function Hero() {
   return (
-    <Section id="home" className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-0" container={false}>
+    <Section id="home" className="min-h-screen flex items-center justify-center py-0" container={false}>
       <RetroGrid />
       
       <div className="container relative z-10 flex flex-col items-center text-center">

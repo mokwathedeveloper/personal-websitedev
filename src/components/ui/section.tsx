@@ -10,7 +10,7 @@ export function Section({ children, id, className, container = true, ...props }:
   return (
     <section 
       id={id} 
-      className={cn("py-20 md:py-32 relative overflow-hidden", className)} 
+      className={cn("py-16 md:py-24 relative overflow-hidden", className)} 
       {...props}
     >
       {container ? (
