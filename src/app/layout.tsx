@@ -3,6 +3,7 @@ import { Inter, Syne, Roboto_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { Navbar } from '@/components/navbar';
+import { FloatingDock } from '@/components/floating-dock';
 import { Footer } from '@/components/footer';
 import { cn } from '@/lib/utils';
 import './globals.css';
@@ -117,6 +118,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
+          <FloatingDock />
           <Toaster />
         </ThemeProvider>
       </body>
