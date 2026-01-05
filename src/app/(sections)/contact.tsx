@@ -10,7 +10,9 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
-import { Loader2, Send } from "lucide-react"
+import { Loader2, Send, Mail, MapPin, Phone } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { SITE_CONFIG } from "@/lib/data"
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -50,82 +52,119 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-secondary/30">
+    <section id="contact" className="py-24 relative overflow-hidden">
+       {/* Decorative gradient blob */}
+       <div className="absolute bottom-0 left-0 -z-10 h-[500px] w-[500px] bg-primary/5 blur-[120px] rounded-full opacity-50" />
+
       <div className="container px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl mx-auto text-center mb-12"
-        >
-          <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-muted-foreground">
-            I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+          
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="sticky top-24">
+              <h2 className="text-4xl font-bold mb-6">Let's work together</h2>
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+                I'm currently looking for new opportunities. Whether you have a project in mind, 
+                a question, or just want to say hi, I'll try my best to get back to you!
+              </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="max-w-md mx-auto bg-card p-8 rounded-xl shadow-sm border"
-        >
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
-              <Input
-                id="name"
-                placeholder="John Doe"
-                {...register("name")}
-                className={errors.name ? "border-destructive" : ""}
-              />
-              {errors.name && (
-                <p className="text-xs text-destructive">{errors.name.message}</p>
-              )}
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <Mail className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Email</h3>
+                    <p className="text-muted-foreground">hello@example.com</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                   <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <MapPin className="h-6 w-6" />
+                  </div>
+                   <div>
+                    <h3 className="font-semibold">Location</h3>
+                    <p className="text-muted-foreground">Remote / Worldwide</p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </motion.div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="john@example.com"
-                {...register("email")}
-                className={errors.email ? "border-destructive" : ""}
-              />
-              {errors.email && (
-                <p className="text-xs text-destructive">{errors.email.message}</p>
-              )}
-            </div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card className="border-muted shadow-lg">
+              <CardHeader>
+                <CardTitle>Send a message</CardTitle>
+                <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Name</Label>
+                    <Input
+                      id="name"
+                      placeholder="John Doe"
+                      {...register("name")}
+                      className={errors.name ? "border-destructive focus-visible:ring-destructive" : ""}
+                    />
+                    {errors.name && (
+                      <p className="text-xs text-destructive">{errors.name.message}</p>
+                    )}
+                  </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
-              <Textarea
-                id="message"
-                placeholder="Hello, I'd like to discuss..."
-                className={`min-h-[120px] ${errors.message ? "border-destructive" : ""}`}
-                {...register("message")}
-              />
-              {errors.message && (
-                <p className="text-xs text-destructive">{errors.message.message}</p>
-              )}
-            </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="john@example.com"
+                      {...register("email")}
+                      className={errors.email ? "border-destructive focus-visible:ring-destructive" : ""}
+                    />
+                    {errors.email && (
+                      <p className="text-xs text-destructive">{errors.email.message}</p>
+                    )}
+                  </div>
 
-            <Button type="submit" className="w-full gap-2" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" /> Sending...
-                </>
-              ) : (
-                <>
-                  <Send className="w-4 h-4" /> Send Message
-                </>
-              )}
-            </Button>
-          </form>
-        </motion.div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Hello, I'd like to discuss..."
+                      className={`min-h-[150px] resize-none ${errors.message ? "border-destructive focus-visible:ring-destructive" : ""}`}
+                      {...register("message")}
+                    />
+                    {errors.message && (
+                      <p className="text-xs text-destructive">{errors.message.message}</p>
+                    )}
+                  </div>
+
+                  <Button type="submit" className="w-full gap-2" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" /> Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" /> Send Message
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

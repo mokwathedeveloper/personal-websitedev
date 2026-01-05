@@ -2,29 +2,45 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Download, Github, Linkedin, Twitter } from "lucide-react"
 import { SITE_CONFIG } from "@/lib/data"
 import Link from "next/link"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16">
+    <section id="home" className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-20">
       <div className="container px-4 flex flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8 relative"
+        >
+          <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />
+          <Avatar className="h-32 w-32 md:h-40 md:w-40 border-4 border-background shadow-xl relative z-10">
+            <AvatarImage src="/avatar-placeholder.jpg" alt={SITE_CONFIG.name} />
+            <AvatarFallback className="text-4xl font-bold bg-primary text-primary-foreground">
+              {SITE_CONFIG.name.charAt(0)}
+            </AvatarFallback>
+          </Avatar>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6">
-            Available for work
+          <span className="inline-block py-1 px-3 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6 hover:bg-secondary/80 transition-colors cursor-default">
+            ✨ Available for work
           </span>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
         >
           {SITE_CONFIG.title} <br className="hidden md:block" />
           <span className="text-primary">experiences</span> that matter.
@@ -33,8 +49,8 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed"
         >
           {SITE_CONFIG.description}
         </motion.p>
@@ -42,19 +58,39 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4"
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex flex-col sm:flex-row gap-4 items-center"
         >
-          <Button size="lg" className="gap-2" asChild>
+          <Button size="lg" className="gap-2 h-12 px-6 text-base" asChild>
             <Link href="#projects">
               View Projects <ArrowRight className="w-4 h-4" />
             </Link>
           </Button>
-          <Button size="lg" variant="outline" asChild>
+          <Button size="lg" variant="outline" className="gap-2 h-12 px-6 text-base" asChild>
             <Link href="#contact">
               Contact Me
             </Link>
           </Button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-12 flex gap-6 text-muted-foreground"
+        >
+           <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+             <Github className="w-6 h-6" />
+             <span className="sr-only">GitHub</span>
+           </a>
+           <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+             <Linkedin className="w-6 h-6" />
+             <span className="sr-only">LinkedIn</span>
+           </a>
+           <a href={SITE_CONFIG.socials.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+             <Twitter className="w-6 h-6" />
+             <span className="sr-only">Twitter</span>
+           </a>
         </motion.div>
       </div>
     </section>

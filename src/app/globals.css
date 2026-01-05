@@ -37,10 +37,6 @@
   --radius-sm: calc(var(--radius) - 4px);
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to sure everything still looks the same.
-*/
 @layer base {
   *,
   ::after,
@@ -102,6 +98,10 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(var(--color-muted-foreground) 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    background-position: 0 0;
+    opacity: 1;
   }
 }
 
