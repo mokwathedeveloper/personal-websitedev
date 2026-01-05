@@ -1,95 +1,91 @@
-# Mokwa | Premium Portfolio Portfolio
+# 💎 Mokwa | Architectural Portfolio Engine
 
-A high-performance, visually stunning personal portfolio built with the latest cutting-edge technologies. This project features an avant-garde design aesthetic inspired by top-tier creative agencies, focusing on cinematic motion, architectural typography, and interactive user experiences.
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-6633FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![Shadcn UI](https://img.shields.io/badge/Shadcn_UI-000000?style=for-the-badge&logo=shadcnui&logoColor=white)](https://ui.shadcn.com/)
 
-![Banner Placeholder](https://github.com/mokwathedeveloper/personal-websitedev/raw/master/public/images/profile.webp)
-
-## ✨ Wow Factors & Features
-
-- **🚀 Cutting-Edge Tech Stack**: Built with **Next.js 16 (Canary)** and **React 19**, leveraging the latest features like Server Components and optimized rendering.
-- **🎨 Tailwind CSS v4**: Utilizes the brand-new, CSS-first engine for ultra-fast builds and modern styling capabilities.
-- **🔳 Bento Grid Architecture**: A mosaic-style "About" section that organizes content into a visually engaging and professional layout.
-- **✨ Interactive Spotlight Cards**: Custom-built cards with mouse-following radial gradients that create a tactile, premium feel.
-- **📽️ Cinematic Animations**: 
-  - **Staggered Text Reveal**: High-impact entrance animations for headlines.
-  - **Smooth Page Transitions**: Seamless fade-and-slide motion between routes.
-  - **Infinite Marquee**: A dynamic, fading marquee for technical skills.
-- **📐 Screen-Fit Design**: Every primary section is engineered to perfectly frame the viewport (`100vh`) for an immersive "app-like" experience.
-- **🎭 Avant-Garde Typography**: Paired **Syne** (architectural headings) with **Inter** (precision body text) for a professional contrast.
-- **⚙️ Data-Driven**: Fully customizable via a centralized configuration layer (`src/lib/data.ts`). Update your entire portfolio without touching a single line of UI code.
-- **🌙 Deep Indigo Theme**: A carefully harmonized color palette optimized for both Light and Dark modes.
-
-## 🛠️ Technical Stack
-
-- **Framework**: [Next.js 16](https://nextjs.org/)
-- **Library**: [React 19](https://react.dev/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **UI Components**: [Radix UI](https://www.radix-ui.com/) & [Shadcn UI](https://ui.shadcn.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Forms**: [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 20+ 
-- npm / pnpm / yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/mokwathedeveloper/personal-websitedev.git
-   cd personal-websitedev
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-## 📂 Project Structure
-
-```text
-├── src/
-│   ├── app/              # Next.js App Router (Pages & Layouts)
-│   │   ├── (sections)/   # Modular UI sections (Hero, About, etc.)
-│   ├── components/       # Reusable React components
-│   │   ├── ui/           # Low-level UI primitives (Shadcn)
-│   ├── lib/              # Utilities and global data
-│   │   └── data.ts       # THE CENTRAL DATA SOURCE (Edit this!)
-├── public/               # Static assets (Images, Icons)
-└── tailwind.config.js    # Legacy config (Modern styles in globals.css)
-```
-
-## ✍️ Customization
-
-To make this portfolio your own, simply edit the content in:
-`src/lib/data.ts`
-
-You can update your:
-- Name and Title
-- Social Links
-- Hero Taglines
-- Detailed About information
-- Project showcase list
-- Work Experience timeline
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+A hyper-modern, architecturally sound personal portfolio engine engineered for high-impact digital presence. This isn't just a website; it's a showcase of **Senior-level Full Stack engineering**, combining cinematic motion design with a rigid, data-driven architecture.
 
 ---
 
-Designed & Built by [Mokwa](https://github.com/mokwathedeveloper)
+## 🚀 Architectural Overview
+
+This project is built on the philosophy of **Separation of Concerns** and **Component Reusability**. By abstracting the content layer from the presentation layer, it achieves a level of maintainability typically reserved for enterprise-grade applications.
+
+### 🛠 The Master Tech Stack
+
+| Layer | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Framework** | **Next.js 16 (Canary)** | Leveraging the latest Turbopack speeds and React 19 Server Components. |
+| **Styling** | **Tailwind CSS v4** | Utilizing the new CSS-first engine for high-performance, maintainable styles. |
+| **Animation** | **Framer Motion** | Cinematic entrance reveals, scroll-linked animations, and layout transitions. |
+| **UI Primitives** | **Radix UI** | Accessible, unstyled components providing the foundation for professional UX. |
+| **Validation** | **Zod & Hook Form** | Type-safe form handling with robust schema validation. |
+| **Typography** | **Syne & Inter** | A carefully curated pairing of architectural and precision typefaces. |
+
+---
+
+## 💎 Premium Features
+
+### 🔳 The Bento Grid Experience
+Inspired by the modern design systems of Apple and Vercel, the "About" section utilizes a **Bento Grid** layout. This mosaic-style architecture allows for complex information hierarchy while maintaining a clean, professional aesthetic.
+
+### ✨ Interactive Spotlight System
+Every card in the portfolio is wrapped in a custom-engineered **SpotlightCard**. It features a high-performance `useMotionTemplate` mouse-tracking system that illuminates borders and backgrounds in real-time, providing a tactile, premium feel.
+
+### 📽 Cinematic Motion Design
+- **Staggered Character Reveals**: Headlines enter the viewport with a word-by-word "slide-up" animation, creating a high-end agency feel.
+- **Global Template Transitions**: Route changes are handled by a dedicated `template.tsx`, ensuring smooth fade-and-slide transitions across the entire application.
+- **Infinite Skill Marquee**: A custom CSS/Framer Motion hybrid that showcases technical expertise in a non-static, engaging way.
+
+### 📐 Full-Viewport "Screen-Fit" Engineering
+Every primary section is mathematically centered and framed to the user's viewport (`100vh`). This "Screen-Fit" design ensures that your work is always the focal point, regardless of the device.
+
+---
+
+## 📂 Engineering Structure
+
+```text
+├── src/
+│   ├── app/
+│   │   ├── (sections)/   # High-level section components (Modular Logic)
+│   │   ├── template.tsx  # Global animation controller
+│   │   └── layout.tsx    # Core architecture & font orchestration
+│   ├── components/
+│   │   ├── ui/           # Atomic Design primitives (Shadcn/Radix)
+│   │   ├── social-links/ # Reusable social orchestration
+│   │   └── navigation/   # High-impact glassmorphism Navbar
+│   └── lib/
+│       ├── data.ts       # THE SOURCE OF TRUTH (Content Layer)
+│       └── utils.ts      # Class merging and structural helpers
+```
+
+---
+
+## ⚙️ Deployment & Development
+
+### 1. Installation
+```bash
+git clone https://github.com/mokwathedeveloper/personal-websitedev.git
+npm install
+```
+
+### 2. Customization (The Content Layer)
+The entire portfolio is controlled by `src/lib/data.ts`. Modify this file to update everything from technical skills to project impact metrics without modifying JSX.
+
+### 3. Production Build
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## 📄 License & Integrity
+
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+Designed with precision and built with passion by **[Mokwa](https://github.com/mokwathedeveloper)**.
