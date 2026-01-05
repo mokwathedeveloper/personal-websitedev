@@ -13,6 +13,43 @@ export const SITE_CONFIG = {
   },
 };
 
+export const CONTENT = {
+  hero: {
+    status: "Available for work",
+    title: {
+      first: "Building digital",
+      highlight: "experiences",
+      last: "that matter.",
+    },
+    cta: {
+      primary: "View Projects",
+      secondary: "Contact Me",
+    },
+  },
+  about: {
+    title: "About Me",
+    subtitle: "A glimpse into my professional journey, skills, and background.",
+    background: {
+      title: "Background",
+      text1: "I'm a passionate developer who loves building things for the web. With a strong foundation in modern technologies, I strive to create applications that are not only functional but also provide a great user experience.",
+      text2: "When I'm not coding, you can find me exploring new technologies, contributing to open source, or enjoying a good cup of coffee.",
+    },
+    skillsTitle: "Technical Skills",
+    experienceTitle: "Experience",
+  },
+  projects: {
+    title: "Featured Projects",
+    subtitle: "A selection of projects that showcase my passion for building scalable and user-centric applications.",
+    tagline: "My Portfolio",
+  },
+  contact: {
+    title: "Let's work together",
+    subtitle: "I'm currently looking for new opportunities. Whether you have a project in mind, a question, or just want to say hi, I'll try my best to get back to you!",
+    formTitle: "Send a message",
+    formSubtitle: "Fill out the form below and I'll get back to you as soon as possible.",
+  },
+};
+
 export const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },

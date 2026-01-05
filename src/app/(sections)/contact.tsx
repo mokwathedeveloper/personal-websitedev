@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 import { Loader2, Send, Mail, MapPin, Phone } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { SITE_CONFIG } from "@/lib/data"
+import { SITE_CONFIG, CONTENT } from "@/lib/data"
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -66,10 +66,9 @@ export function Contact() {
             transition={{ duration: 0.5 }}
           >
             <div className="sticky top-24">
-              <h2 className="text-4xl font-bold mb-6">Let's work together</h2>
+              <h2 className="text-4xl font-bold mb-6 font-heading">{CONTENT.contact.title}</h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                I'm currently looking for new opportunities. Whether you have a project in mind, 
-                a question, or just want to say hi, I'll try my best to get back to you!
+                {CONTENT.contact.subtitle}
               </p>
 
               <div className="space-y-6">
@@ -109,8 +108,8 @@ export function Contact() {
               
               <div className="relative">
                 <CardHeader>
-                  <CardTitle>Send a message</CardTitle>
-                  <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
+                  <CardTitle className="font-heading">{CONTENT.contact.formTitle}</CardTitle>
+                  <CardDescription>{CONTENT.contact.formSubtitle}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

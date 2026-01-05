@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { SKILLS, EXPERIENCES } from "@/lib/data"
+import { SKILLS, EXPERIENCES, CONTENT } from "@/lib/data"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Briefcase, GraduationCap, Code } from "lucide-react"
@@ -24,9 +24,9 @@ export function About() {
           className="max-w-5xl mx-auto"
         >
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">About Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">{CONTENT.about.title}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              A glimpse into my professional journey, skills, and background.
+              {CONTENT.about.subtitle}
             </p>
           </div>
           
@@ -37,20 +37,16 @@ export function About() {
                   <span className="p-2 bg-primary/10 rounded-lg text-primary">
                     <GraduationCap className="w-5 h-5" />
                   </span>
-                  Background
+                  {CONTENT.about.background.title}
                 </h3>
                 <Card className="border-none shadow-sm bg-background/50 backdrop-blur-sm">
                   <CardContent className="pt-6">
                     <div className="prose dark:prose-invert text-muted-foreground leading-relaxed text-sm">
                       <p className="mb-4">
-                        I'm a passionate developer who loves building things for the web. 
-                        With a strong foundation in modern technologies, I strive to create 
-                        applications that are not only functional but also provide a great 
-                        user experience.
+                        {CONTENT.about.background.text1}
                       </p>
                       <p>
-                        When I'm not coding, you can find me exploring new technologies, 
-                        contributing to open source, or enjoying a good cup of coffee.
+                        {CONTENT.about.background.text2}
                       </p>
                     </div>
                   </CardContent>
@@ -62,7 +58,7 @@ export function About() {
                   <span className="p-2 bg-primary/10 rounded-lg text-primary">
                     <Code className="w-5 h-5" />
                   </span>
-                  Technical Skills
+                  {CONTENT.about.skillsTitle}
                 </h3>
                 
                 {/* Marquee Container */}
@@ -100,7 +96,7 @@ export function About() {
                 <span className="p-2 bg-primary/10 rounded-lg text-primary">
                   <Briefcase className="w-5 h-5" />
                 </span>
-                Experience
+                {CONTENT.about.experienceTitle}
               </h3>
               <div className="space-y-6">
                 {EXPERIENCES.map((exp, index) => (

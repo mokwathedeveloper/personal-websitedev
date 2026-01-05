@@ -4,7 +4,7 @@ import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Code2, Sparkles } from "lucide-react"
-import { PROJECTS } from "@/lib/data"
+import { PROJECTS, CONTENT } from "@/lib/data"
 import { cn } from "@/lib/utils"
 import {
   Card,
@@ -15,6 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 
 const categories = ["All", ...new Set(PROJECTS.map((project) => project.category))]
 
@@ -40,13 +41,13 @@ export function Projects() {
         >
           <div className="inline-flex items-center gap-2 rounded-full border bg-muted/50 px-3 py-1 text-sm font-medium mb-4 backdrop-blur-sm">
             <Sparkles className="h-4 w-4 text-primary" />
-            <span>My Portfolio</span>
+            <span>{CONTENT.projects.tagline}</span>
           </div>
-          <h2 className="text-4xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-            Featured Projects
+          <h2 className="text-4xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 font-heading">
+            {CONTENT.projects.title}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            A selection of projects that showcase my passion for building scalable and user-centric applications.
+            {CONTENT.projects.subtitle}
           </p>
         </motion.div>
 
@@ -87,10 +88,16 @@ export function Projects() {
                   {/* Gradient Border Effect */}
                   <div className="absolute inset-0 rounded-lg p-[1px] bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-primary/50 group-hover:via-purple-500/50 group-hover:to-primary/50 -z-10 transition-all duration-500" />
                   
-                  <div className="relative aspect-video overflow-hidden bg-muted/50">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-700 ease-out">
+                  <div className="relative aspect-video overflow-hidden bg-muted/50 group-hover:shadow-inner transition-all">
+                    {/* 
+                       Placeholder for project image.
+                       In a real app, use:
+                       <Image src={project.image} alt={project.title} fill className="object-cover" />
+                    */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-700 ease-out">
                       <Code2 className="h-16 w-16 text-primary/20" />
                     </div>
+                    
                     <div className="absolute top-4 right-4 z-10">
                       <Badge variant="secondary" className="backdrop-blur-md bg-background/80 shadow-sm">
                         {project.category}
@@ -100,7 +107,7 @@ export function Projects() {
                   </div>
                   
                   <CardHeader>
-                    <CardTitle className="line-clamp-1 group-hover:text-primary transition-colors duration-300">{project.title}</CardTitle>
+                    <CardTitle className="line-clamp-1 group-hover:text-primary transition-colors duration-300 font-heading">{project.title}</CardTitle>
                     <CardDescription className="line-clamp-2 mt-2">
                       {project.description}
                     </CardDescription>
