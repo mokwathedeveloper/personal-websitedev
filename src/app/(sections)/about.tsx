@@ -79,17 +79,18 @@ export function About() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="relative overflow-hidden border-l-4 border-l-primary shadow-sm hover:shadow-md transition-shadow">
-                      <CardHeader className="pb-2">
+                    <Card className="relative overflow-hidden border-l-4 border-l-primary shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <CardHeader className="pb-2 relative">
                         <div className="flex justify-between items-start mb-1">
-                          <CardTitle className="text-base font-bold">{exp.role}</CardTitle>
-                          <Badge variant="outline" className="text-xs font-normal bg-muted/50">
+                          <CardTitle className="text-base font-bold group-hover:text-primary transition-colors">{exp.role}</CardTitle>
+                          <Badge variant="outline" className="text-xs font-normal bg-background/80 backdrop-blur-sm">
                             {exp.period}
                           </Badge>
                         </div>
                         <div className="text-sm font-medium text-primary">{exp.company}</div>
                       </CardHeader>
-                      <CardContent>
+                      <CardContent className="relative">
                         <p className="text-sm text-muted-foreground leading-relaxed">
                           {exp.description}
                         </p>

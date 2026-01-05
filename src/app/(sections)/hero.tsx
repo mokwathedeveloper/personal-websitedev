@@ -67,12 +67,13 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 items-center"
         >
-          <Button size="lg" className="gap-2 h-12 px-8 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow" asChild>
+          <Button size="lg" className="gap-2 h-12 px-8 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow relative overflow-hidden group" asChild>
             <Link href="#projects">
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:animate-shimmer" />
               View Projects <ArrowRight className="w-4 h-4" />
             </Link>
           </Button>
-          <Button size="lg" variant="outline" className="gap-2 h-12 px-8 text-base bg-background/50 backdrop-blur-sm hover:bg-background/80" asChild>
+          <Button size="lg" variant="outline" className="gap-2 h-12 px-8 text-base bg-background/50 backdrop-blur-sm hover:bg-background/80 hover:border-primary/50 transition-colors" asChild>
             <Link href="#contact">
               Contact Me
             </Link>

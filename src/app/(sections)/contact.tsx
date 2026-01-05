@@ -102,66 +102,72 @@ export function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Card className="border-muted shadow-lg">
-              <CardHeader>
-                <CardTitle>Send a message</CardTitle>
-                <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      placeholder="John Doe"
-                      {...register("name")}
-                      className={errors.name ? "border-destructive focus-visible:ring-destructive" : ""}
-                    />
-                    {errors.name && (
-                      <p className="text-xs text-destructive">{errors.name.message}</p>
-                    )}
-                  </div>
+            <Card className="border-muted shadow-lg relative overflow-hidden group">
+              {/* Subtle Gradient Glow */}
+              <div className="absolute -inset-0.5 bg-gradient-to-br from-primary/30 to-purple-500/30 opacity-30 blur-xl group-hover:opacity-50 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-card/90 backdrop-blur-sm" />
+              
+              <div className="relative">
+                <CardHeader>
+                  <CardTitle>Send a message</CardTitle>
+                  <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Name</Label>
+                      <Input
+                        id="name"
+                        placeholder="John Doe"
+                        {...register("name")}
+                        className={`bg-background/50 focus:bg-background transition-colors ${errors.name ? "border-destructive focus-visible:ring-destructive" : "focus-visible:ring-primary"}`}
+                      />
+                      {errors.name && (
+                        <p className="text-xs text-destructive">{errors.name.message}</p>
+                      )}
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="john@example.com"
-                      {...register("email")}
-                      className={errors.email ? "border-destructive focus-visible:ring-destructive" : ""}
-                    />
-                    {errors.email && (
-                      <p className="text-xs text-destructive">{errors.email.message}</p>
-                    )}
-                  </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        {...register("email")}
+                        className={`bg-background/50 focus:bg-background transition-colors ${errors.email ? "border-destructive focus-visible:ring-destructive" : "focus-visible:ring-primary"}`}
+                      />
+                      {errors.email && (
+                        <p className="text-xs text-destructive">{errors.email.message}</p>
+                      )}
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Hello, I'd like to discuss..."
-                      className={`min-h-[150px] resize-none ${errors.message ? "border-destructive focus-visible:ring-destructive" : ""}`}
-                      {...register("message")}
-                    />
-                    {errors.message && (
-                      <p className="text-xs text-destructive">{errors.message.message}</p>
-                    )}
-                  </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message</Label>
+                      <Textarea
+                        id="message"
+                        placeholder="Hello, I'd like to discuss..."
+                        className={`min-h-[150px] resize-none bg-background/50 focus:bg-background transition-colors ${errors.message ? "border-destructive focus-visible:ring-destructive" : "focus-visible:ring-primary"}`}
+                        {...register("message")}
+                      />
+                      {errors.message && (
+                        <p className="text-xs text-destructive">{errors.message.message}</p>
+                      )}
+                    </div>
 
-                  <Button type="submit" className="w-full gap-2" disabled={isSubmitting}>
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" /> Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4" /> Send Message
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
+                    <Button type="submit" className="w-full gap-2 shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all" disabled={isSubmitting}>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" /> Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" /> Send Message
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </CardContent>
+              </div>
             </Card>
           </motion.div>
         </div>
