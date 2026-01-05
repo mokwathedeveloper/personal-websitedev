@@ -105,6 +105,21 @@
   }
 }
 
+@layer utilities {
+  .animate-grid {
+    animation: grid 15s linear infinite;
+  }
+}
+
+@keyframes grid {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

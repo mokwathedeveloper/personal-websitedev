@@ -2,15 +2,18 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Download, Github, Linkedin, Twitter } from "lucide-react"
+import { ArrowRight, Github, Linkedin, Twitter } from "lucide-react"
 import { SITE_CONFIG } from "@/lib/data"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import RetroGrid from "@/components/ui/retro-grid"
 
 export function Hero() {
   return (
-    <section id="home" className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-20">
-      <div className="container px-4 flex flex-col items-center text-center">
+    <section id="home" className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center py-20 overflow-hidden">
+      <RetroGrid />
+      
+      <div className="container px-4 flex flex-col items-center text-center z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -18,9 +21,9 @@ export function Hero() {
           className="mb-8 relative"
         >
           <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />
-          <Avatar className="h-32 w-32 md:h-40 md:w-40 border-4 border-background shadow-xl relative z-10">
+          <Avatar className="h-32 w-32 md:h-40 md:w-40 border-4 border-background shadow-xl relative z-10 ring-4 ring-primary/10">
             <AvatarImage src="/avatar-placeholder.jpg" alt={SITE_CONFIG.name} />
-            <AvatarFallback className="text-4xl font-bold bg-primary text-primary-foreground">
+            <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-primary to-primary/50 text-primary-foreground">
               {SITE_CONFIG.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
@@ -31,8 +34,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6 hover:bg-secondary/80 transition-colors cursor-default">
-            ✨ Available for work
+          <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm mb-6 cursor-default">
+            <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+            Available for work
           </span>
         </motion.div>
 
@@ -40,10 +44,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
         >
           {SITE_CONFIG.title} <br className="hidden md:block" />
-          <span className="text-primary">experiences</span> that matter.
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-pink-500 animate-gradient-x">
+            experiences
+          </span> that matter.
         </motion.h1>
 
         <motion.p
@@ -61,12 +67,12 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 items-center"
         >
-          <Button size="lg" className="gap-2 h-12 px-6 text-base" asChild>
+          <Button size="lg" className="gap-2 h-12 px-8 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow" asChild>
             <Link href="#projects">
               View Projects <ArrowRight className="w-4 h-4" />
             </Link>
           </Button>
-          <Button size="lg" variant="outline" className="gap-2 h-12 px-6 text-base" asChild>
+          <Button size="lg" variant="outline" className="gap-2 h-12 px-8 text-base bg-background/50 backdrop-blur-sm hover:bg-background/80" asChild>
             <Link href="#contact">
               Contact Me
             </Link>
@@ -79,15 +85,15 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-12 flex gap-6 text-muted-foreground"
         >
-           <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+           <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-primary/10 hover:text-primary transition-all duration-300">
              <Github className="w-6 h-6" />
              <span className="sr-only">GitHub</span>
            </a>
-           <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+           <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-primary/10 hover:text-primary transition-all duration-300">
              <Linkedin className="w-6 h-6" />
              <span className="sr-only">LinkedIn</span>
            </a>
-           <a href={SITE_CONFIG.socials.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+           <a href={SITE_CONFIG.socials.twitter} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-primary/10 hover:text-primary transition-all duration-300">
              <Twitter className="w-6 h-6" />
              <span className="sr-only">Twitter</span>
            </a>
